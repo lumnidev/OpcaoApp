@@ -1,12 +1,36 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+//import React, { Component } from 'react';
+//import { Text, View } from 'react-native';
+import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 
-import firebase from '@firebase/app';
-import '@firebase/database';
+//import firebase from '@firebase/app';
+//import '@firebase/database';
+
+import HomeScreen from './screens/homeScreen';
+import CategoryScreen from './screens/categoryScreen';
+import SignInScreen from './screens/signInScreen';
+import AuthLoadingScreen from './screens/authLoadingScreen';
 
 
+// Criação dos stacks de autenticação e de aplicação (para o usuário já autenticado)
+const AppStack = createStackNavigator({ Home: HomeScreen, Category: CategoryScreen });
+const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
-export default class App extends Component {
+// Exporta um NavigationContainer para a função AppRegistry.registerComponent(appName, () => App); no index.js
+export default createAppContainer(createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen, //screen
+    App: AppStack, // Stack (começa sempre na primeira screen da stack, neste caso Home screen)
+    Auth: AuthStack, // Stack
+  },
+  {
+    initialRouteName: 'AuthLoading', // Rota inicial (neste caso, uma screen)
+  }
+));
+
+
+// Funcionalidade de fazer requisição de autenticação vai para AuthLoadingScreen
+
+/*export default class App extends Component {
 
   componentWillMount() {
     firebase.initializeApp({
@@ -17,57 +41,21 @@ export default class App extends Component {
       storageBucket: "teste123-38e68.appspot.com",
       messagingSenderId: "52931871132"
     });
-    firebase.database().ref('test').once('value',snap=>{
+    firebase.database().ref('test').once('value', snap => {
       console.log(snap.val());
     });
   }
 
 
-  /*componentWillMount() {
-    const firebase = require("firebase");
-
-    // Initialize Firebase
-    const config = {
-      apiKey: "AIzaSyBDA0m4YIOb1PvWZB1AZua4ZB2XvWKN_tw",
-      authDomain: "teste123-38e68.firebaseapp.com",
-      databaseURL: "https://teste123-38e68.firebaseio.com",
-      projectId: "teste123-38e68",
-      storageBucket: "teste123-38e68.appspot.com",
-      messagingSenderId: "52931871132"
-    };
-    firebase.initializeApp(config);
-  }*/
-
   render() {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.welcome}>Bem-vindo ao Mercado Opção</Text>
       </View>
     );
   }
 
-}
+}*/
 
 
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
