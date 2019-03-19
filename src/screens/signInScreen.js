@@ -8,8 +8,14 @@ import Icon from 'react-native-vector-icons/Ionicons'
 const { width: WIDTH } = Dimensions.get('window')
 
 export default class SignInScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { email: '', password: '' };
+    }
+
     static navigationOptions = {
-        title: 'Entrar',
+        title: 'SignInScreen',
     };
 
 
@@ -21,7 +27,7 @@ export default class SignInScreen extends Component {
                 <Image source={logo} style={styles.logo} />
             </View>
             <View style={styles.inputContainer}>
-           <Icon name="md-contact" size={28} color={'#2196f3'}
+           <Icon name={'md-contact'} size={28} color={'#2196f3'}
                 style={styles.inputIcon}/>
                 <TextInput
                     style={styles.input}

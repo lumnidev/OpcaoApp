@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 
 
-export default class CategoryScreen extends Component {
+export default class AboutScreen extends Component {
     static navigationOptions = {
-        title: 'Categorias',
+        title: 'Sobre...',
     };
 
 
@@ -13,11 +13,11 @@ export default class CategoryScreen extends Component {
         return (
             <View>
                 <Text>
-                    Category Screen
+                    About Screen
                 </Text>
                 <Button
                     title="print stack"
-                    onPress={() => console.log('test log', this.props.navigation.state)}
+                    onPress={() => console.log('aboutScreen.nav.state: ', this.props.navigation.state)}
                 />
             </View>
         );
