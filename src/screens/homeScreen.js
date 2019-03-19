@@ -4,9 +4,14 @@ import { Button, Text, View } from 'react-native';
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
-        title: 'Entrar',
+        title: 'HomeTitle',
     };
 
+    products = [
+        { id: "id001", name: "pão", barCode: 1 },
+        { id: "id002", name: "batata", barCode: 2 },
+        { id: "id003", name: "chocolate", barCode: 3 }
+    ];
 
 
     render() {
@@ -16,8 +21,8 @@ export default class HomeScreen extends Component {
                     HomeScreen
                 </Text>
                 <Button
-                    title="Ir para categoriass "
-                    onPress={() => this.props.navigation.navigate('Category', { name: 'test category' })}
+                    title="Isto é um produto (pao)"
+                    onPress={() => this.props.navigation.navigate('Details', { product: this.products[2] })}
                 />
             </View>
         );

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, TextInput } from 'react-native';
 
 
 export default class SignInScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { email: '', password: '' };
+    }
+
     static navigationOptions = {
-        title: 'Entrar',
+        title: 'SignInScreen',
     };
 
 
@@ -15,6 +21,12 @@ export default class SignInScreen extends Component {
                 <Text>
                     SignInScreen
                 </Text>
+
+                <TextInput
+                    style={{ height: 40 }}
+                    placeholder="Email"
+                    onChangeText={(text) => this.setState({ text })}
+                />
                 <Button
                     title="Entrar"
                     onPress={() => this.props.navigation.navigate('App', { name: 'test' })}
