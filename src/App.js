@@ -12,7 +12,7 @@ import AuthLoadingScreen from './screens/authLoadingScreen';
 
 
 // Criação dos stacks de autenticação e de aplicação (para o usuário já autenticado)
-const AppStack = createStackNavigator({ Home: HomeScreen, Category: CategoryScreen });
+const AppStack = createStackNavigator({ SignIn: SignInScreen, Home: HomeScreen, Category: CategoryScreen  });
 const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 // Exporta um NavigationContainer para a função AppRegistry.registerComponent(appName, () => App); no index.js
