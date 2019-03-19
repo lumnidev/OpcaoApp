@@ -15,13 +15,13 @@ export default class AuthLoadingScreen extends Component {
 
     componentWillMount() {
         console.log("Entered Component will mount");
-        this.props.navigation.navigate('App');
+        //this.props.navigation.navigate('App');
 
-        /*if (firebase.auth().currentUser != null) {
+        if (firebase.auth().currentUser != null) {
             this.props.navigation.navigate('App');
         } else {
             this.props.navigation.navigate('Auth');
-        }*/
+        }
     }
 
     render() {

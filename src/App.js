@@ -16,16 +16,12 @@ import AuthLoadingScreen from './screens/authLoadingScreen';
 import AboutScreen from './screens/aboutScreen';
 import DetailsScreen from './screens/detailsScreen';
 
+import { FIREBASE_CONFIG } from './environment.js';
 
+
+console.log("firebaseconfig: ", FIREBASE_CONFIG);
 // Inicialzar Firebase:
-firebase.initializeApp({
-  apiKey: "AIzaSyC4kTPrxZN_067pNivxEouLrlQVV_hSssA",
-  authDomain: "opcaodev-1233.firebaseapp.com",
-  databaseURL: "https://opcaodev-1233.firebaseio.com",
-  projectId: "opcaodev-1233",
-  storageBucket: "opcaodev-1233.appspot.com",
-  messagingSenderId: "32255598931"
-});
+firebase.initializeApp(FIREBASE_CONFIG);
 
 // Criação dos stacks de autenticação e de aplicação (para o usuário já autenticado)
 const HomeStack = createStackNavigator({
